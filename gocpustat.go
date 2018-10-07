@@ -1,7 +1,6 @@
 package gocpustat
 
 import (
-	"fmt"
 	"io/ioutil"
 	"strconv"
 	"strings"
@@ -62,7 +61,7 @@ func GetCPUInfo(path string) ([]CPUInfo, error) {
 // GetCPUStat returns number of Processors and number of core per Processor
 // installed in the given Linux machine
 func GetCPUStat() CPUStat {
-	cpuInfo, _ := GetCPUInfo("test_CPUinfo")
+	cpuInfo, _ := GetCPUInfo("/proc/cpuinfo")
 	cpuStat := CPUStat{}
 	coreCount := 0
 	for i := 0; i < len(cpuInfo); i++ {
