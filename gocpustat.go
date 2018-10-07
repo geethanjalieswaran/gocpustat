@@ -43,7 +43,6 @@ func GetCPUInfo(path string) ([]CPUInfo, error) {
 		CPUInfo := CPUInfo{}
 		for j := 0; j < len(line); j++ {
 			values := strings.Split(line[j], ":")
-			//fmt.Println(values[0])
 
 			switch key := strings.TrimSpace(values[0]); key {
 			case "processor":
@@ -55,7 +54,6 @@ func GetCPUInfo(path string) ([]CPUInfo, error) {
 			}
 
 		}
-		fmt.Println(CPUInfo.CPUCores)
 		CPUInfoAll = append(CPUInfoAll, CPUInfo)
 	}
 	return CPUInfoAll, nil
