@@ -16,14 +16,14 @@ type CPUStat struct {
 // CPUInfo struct type for CPU Information
 type CPUInfo struct {
 	// Id processor ID
-	ID int `json:"processor"`
+	ID int
 	// CPUCores holds number of cores
-	CPUCores int `json:"CPU cores"`
+	CPUCores int
 }
 
 // CPUInfoAll struct type of CPUInfo
 type CPUInfoAll struct {
-	CPUInfoAll []CPUInfo `json:"CPUInfoAll"`
+	CPUInfoAll []CPUInfo
 }
 
 // GetCPUInfo will return infformation about
