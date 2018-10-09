@@ -10,6 +10,7 @@ import (
 type CPUStat struct {
 	NumberOfLogicalCPU int
 	TotalCore          int
+	ThreadPerCore      int
 }
 
 // CPUInfo struct type for CPU Information
