@@ -8,9 +8,8 @@ import (
 
 // CPUStat struct type for CPU Stat
 type CPUStat struct {
-	NumberOfCPU int
-	CorePerCPU  int
-	TotalCore   int
+	NumberOfLogicalCPU int
+	TotalCore          int
 }
 
 // CPUInfo struct type for CPU Information
@@ -63,13 +62,11 @@ func GetCPUInfo(path string) ([]CPUInfo, error) {
 func GetCPUStat() CPUStat {
 	cpuInfo, _ := GetCPUInfo("/proc/cpuinfo")
 	cpuStat := CPUStat{}
-	coreCount := 0
-	for i := 0; i < len(cpuInfo); i++ {
-		coreCount += cpuInfo[i].CPUCores
-		// change logic later
-		cpuStat.CorePerCPU = cpuInfo[i].CPUCores
+	cpuStat.NumberOfLogicalCPU = len(cpuInfo)
+	if len(cpuInfo) > 0 {
+		cpuStat.TotalCore = cpuInfo[0].CPUCores
+		cpuStat.ThreadPerCore = cpuStat.NumberOfLogicalCPU / cpuStat.TotalCore
 	}
-	cpuStat.NumberOfCPU = len(cpuInfo)
-	cpuStat.TotalCore = coreCount
+
 	return cpuStat
 }
